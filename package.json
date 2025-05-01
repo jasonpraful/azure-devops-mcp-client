@@ -1,0 +1,55 @@
+{
+  "name": "@jasonpraful/azure-devops-mcp-client",
+  "version": "0.0.1",
+  "description": "MCP Client to interact with Azure DevOps",
+  "type": "module",
+  "license": "UNLICENSED",
+  "keywords": [],
+  "author": {
+    "email": "jason.praful@gmail.com",
+    "name": "Jason Praful"
+  },
+  "bin": "bin/index.js",
+  "main": "bin/index.js",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "scripts": {
+    "dev": "tsx --watch src/index.ts",
+    "start": "tsx src/index.ts",
+    "build": "rm -rf bin && tsc",
+    "postbuild": "grep -Eo '\"version\": \"[0-9]+\\.[0-9]+\\.[0-9]+\"' package.json | grep -Eo '[0-9]+\\.[0-9]+\\.[0-9]+' | xargs -I {} echo \"export const VERSION = '{}'\" > src/version.ts",
+    "pre-commit": "changeset && changeset version"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.10.2",
+    "azure-devops-node-api": "14.1.0",
+    "node-fetch": "3.3.2",
+    "zod": "3.24.3",
+    "zod-to-json-schema": "3.24.5"
+  },
+  "devDependencies": {
+    "@changesets/cli": "2.29.2",
+    "@types/node": "22.14.0",
+    "@types/node-fetch": "2.6.12",
+    "tsx": "4.19.4",
+    "typescript": "5.8.3"
+  },
+  "volta": {
+    "pnpm": "10.10.0",
+    "node": "22.14.0"
+  },
+  "packageManager": "pnpm@10.10.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jasonpraful/azure-devops-mcp-client.git"
+  },
+  "homepage": "https://github.com/jasonpraful/azure-devops-mcp-client#readme",
+  "bugs": {
+    "url": "https://github.com/jasonpraful/azure-devops-mcp-client/issues"
+  }
+}
